@@ -41,13 +41,51 @@
 						</p>
 					</section>
 				</section>					
-				<section>
-					<iframe height="400px" width="100%" src="https://repl.it/@albertosanchez6/LoudAlarmedJavadoc?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-				</section>
 				<section id="fragments">
 					<h2>Que es GO ?</h2>
 					<p>Go es una lenguaje de programacion...</p>
 					<p><span class="fragment">... concurrente</span> <span class="fragment">y</span> <span class="fragment">compilado.</span></p>
+				</section>
+				<section>
+					<section>
+					<p>AQUI IRIA LA INTRODUCCION A GO</p>
+					</section>
+				</section>
+				<section>
+					<h2>Asi se ve un programa basico en GO</h2>
+					<iframe height="400px" width="100%" src="https://repl.it/@albertosanchez6/LoudAlarmedJavadoc?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+				</section>
+				<section>
+					<section>
+						<h2>Variables</h2>
+						<p>Las variables en Go se pueden declarar explicitamente o se puede incializar con un valor y estas no pueden cambiar de tipo en un futuro, para asegurar que cuando una funcion las llame sean del tipo correcto.</p>
+					</section>
+					<section>
+						<p>Para declarar una variable se usa 'var'</p>
+						<pre><code>var a string = "initial"</code></pre>
+						<br>
+						<p>Tambien se puede declarar multiples variables en una linea</p>
+						<pre><code>var b, c int = 1, 2</code></pre>
+					</section>
+					<section>
+						<p>Las variables pueden ser declaradas sin inicializarce, estas por default son de valor cero, por ejemplo:</p>
+						<pre><code>var a int
+var b string
+var c float64
+var d bool
+	</code></pre>
+						<p>el output de a seria "0", de b: "" , de c: "0" y de d: false </p>
+						
+					</section>
+					<section>									
+						<p>En Go existe la sintaxis ":=" que es una abreviatura para incializar variables. Por ejemplo:</p>
+						<pre><code>f := "short"</code></pre>
+						<span>es igual a</span>
+						<pre><code>var f string = "short"</code></pre>
+					</section>
+				</section>
+				<section>
+
 				</section>
 			</div>
 		</div>

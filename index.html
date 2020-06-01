@@ -106,7 +106,164 @@ var d bool
 					</section>
 				</section>
 				<section>
+					<section>
+						<h3>Condicionales</h3>
+						<p> Las sentencias condicionales en GO nos permiten controlar la ejecución de código en nuestro algoritmo, dependiendo del resultado de la evaluación de la condición que se define en la estructura del condicional.</p>
+					</section>
+					<section>
+						<p> hAY diferentes tipos de sentencias condicionales: </p>
+						<p> sentencia IF</p>
+						<p> sentencia IF-ELSE</p>
+						<p> sentencia ELSE IF</p>
+						<p> sentencia SWITCH</p>
+						<p> sentencia SELECT</p>
+					</section>
+					<section>
+						<h4> Sentencia IF</h4>
+						<p>	La sentencia if se utiliza para verificar la veracidad de una expresión, y de ser verdadera se ejecutará el código destinado para cuando la condición se cumpliera</p>
+					</section>
+					<section>
+						<p> Ejemplo: Tenemos una variable “número” definida con valor de entero 5 y tenemos una sentencia IF con la condición a evaluar de que si la variable “número” es menor que 9 diera verdadera, debe ejecutarse la llamada al println de fmt, el cual imprimirá en pantalla “el número es menor a 9”.</p>
+						<pre><code>
+							var numero int = 5
+							if  numero<9{
+							fmt.Println(“el numero es menor a 9”)
+							}
+						</code></pre>
+					</section>
+					<section>
+						<p> Pero esto es limitado, ¿Qué sucede si quiero ejecutar una parte del código cuando no se cumpla la condición?</p>
+						<p><span class="fragment"> para ello utilizaremos la sentencia IF-ELSE. </span></p>
+					</section>
+					<section>
+						<h5> Sentencia IF-ELSE</h5>
+						<p> Ah la sentencia IF , se le agrega otra rama de ejecución llamada ELSE, cuando la condición establecida en la sentencia IF no se cumpla, se ejecutará el código definido en la rama else.	</p>
+						<pre><code>
+							var numero int = 5
+							if  numero<9{
+								fmt.Println(“el numero es menor a 9”)
+							}else{
+								fmt.Println(“el numero es mayor a 9”)
+							}
+						</code></pre>
+					</section>
+					<section>
+						<h6> PREGUNTA</h6>
+						<p> Qué sucede si queres trabajar con múltiples condiciones en cadena, para que se evalúen de a una?</p>
+						<br>
+						<p><span class="fragment"> RESPUESTA: ELSE IF. </span></p>
+					</section>
+					<section>
+						<h7>Sentencia ELSE IF</h7>
+						<p>La sentencia ELSE IF nos permite encadenar condiciones para que se evalúen en el instante en que la condición anterior dio falsa.</p>
+						<pre><code>
+							var numero int = 5
+							if  numero<9{
+								fmt.Println(“el numero es menor a 9”)
+							}
+							else if numero == 5{
+								fmt.Println(“el numero es igual a 5”)
+							}
+							else{
+								fmt.Println(“el numero es mayor a 9”)
+							}
+						</code></pre>
+						<p>	Con esto finaliza las sentencias relacionadas al IF.</p>
+					</section>
+					<section>
+						<h8>Sentencia SWITCH</h8>
+						<p>Esta sentencia nos permite evaluar una variable contra una lista de valores conocidos como case (casos en ingles).</p>
+						<br>
+						<p> En GO los switch pueden ser de dos tipos</p>
+						<p><span class="fragment">
+							EXPRESIÓN: Los case contienen expresiones que son comparadas con el valor de la variable a evaluar.
+						</span></p>
+						<br>
+						<p><span class="fragment">
+							TIPO: Los case contienen un tipo de dato que es comparado con el tipo de dato de la variable a evaluar.
+						</span></p>
+					</section>
+					<section>
+						<h9>Switch de expresiones:</h9>
+						<p>Reglas que aplican para este tipo de switch:</p>
+						<p> •Si no pasa una expresión, el valor por defecto es true.</p>
+						<p>	•No hay límite de case siempre y cuando cada case esté seguido de al menos un valor contra el cual comparar y dos puntos.</p>
+						<p>	•Si se usa una expresión constante para un case, debe de ser del mismo tipo que el valor a evaluar, y debe de ser una constante o literal.</p>
+						<p>	•Cuando la variable a evaluar es igual a un case, el código después de los dos puntos (“ : “) se ejecuta. No se utiliza break para terminar el case.</p>
+						<p>	•Puede haber un case por default (defecto) para ejecutarse cuando no se cumple ningún case. El case default debe ir al final y no necesita break.</p>
+					</section>
+					<section>
+						<p> EJEMPLO</p>
+						<pre><code>
+							func main() {
+ 							/*variable local de tipo entero*/
+ 								var hora int = 10
 
+		 					/*Se pasa hora como variable de prueba*/
+ 								switch hora{
+   							/*Si hora coincide con alguna de las literales especificadas*/
+   									case 1, 2, 3, 4: fmt.Println("Aún es temprano")
+   									case 5, 6, 7: fmt.Println("Está atardeciendo")
+   									case 8: fmt.Println("Acaba de oscurecer")
+									case 9, 10, 11: fmt.Println("Ya es tarde")
+   									default: fmt.Println("Es demasiado tarde")
+ 								}
+							}
+						</code></pre>
+					</section>
+					<section>
+						<h10> Switch de tipo</h10>
+						<p>	Reglas que aplican para este tipo de switch:</p>
+						<p>	•La expresión usada en una sentencia debe de ser una variable o una interface de tipo</p>
+						<p>	•No hay límites para la cantidad de case en el switch.</p>
+						<p>	•El tipo de dato para un case debe ser el mismo tipo que la variable a evaluar.</p>
+						<p>	•Cuando la variable a evaluar es igual a un case, se ejecuta dicho case y los demás no son verificados. No es necesario un break.</p>
+						<p>	•Cuando la variable a evaluar es igual a un case, se ejecuta dicho case y los demás no son verificados. No es necesario un break.</p>
+					</section>
+					<section>
+						<p> EJEMPLO</p>
+						<pre><code>
+							func main() {
+ 							/*variable interface sin tipo asignado*/
+ 								var x interface{}
+ 								switch x.(type){ /*Retorna el tipo de x*/
+							/*Casos*/
+   									case nil: fmt.Println("Es una variable tipo nil")
+   									case int: fmt.Println("Es una variable tipo int")
+   									case float64: fmt.Println("Es una variable tipo float64")
+   									case int64: fmt.Println("Es una variable tipo int64")
+   									default: fmt.Println("No es ninguno de los tipos anteriores")
+ 								}
+							}
+						</code></pre>
+					</section>
+					<section>
+						<h11>Sentencia SELECT CASE</h11>
+						<p>La sentencia select case, permite ejecutar una de entre varias acciones en función del valor de una expresión.</p>
+					</section>
+					<section>
+						<p>	como funciona?</p>
+						<p>	1.Se evalúa la expresión, dando como resultado un número.</p>
+						<p> 2.Luego, se recorren los case, dentro de la estructura buscando que el número coincida con uno de los valores.</p>
+						<p> 3.Es necesario que coincidan todos sus valores.</p>
+						<p> 4.Cuando se encuentra la primera coincidencia, se ejecuta el bloque de sentencias correspondiente y se sale de la estructura select case.</p>
+						<p> 5.Si no se encuentra ninguna coincidencia con ningún valor, se ejecuta el bloque de sentencias de la selección case else.</p>
+					</section>
+					<section>
+						<p> EJEMPLO</p>
+						<pre><code>
+							Select (Expresión)
+      							Case Valor1
+         							(Bloque de sentencias 1)
+      							Case Valor2
+         							(Bloque de sentencias 2)
+      							Case Valor n
+         							(Bloque de sentencias n)
+      							Case Else
+         							(Bloque de sentencias "Else")
+   								End Select
+						</code></pre>
+					</section>
 				</section>
 			</div>
 		</div>

@@ -111,7 +111,7 @@ var d bool
 						<p> Las sentencias condicionales en GO nos permiten controlar la ejecución de código en nuestro algoritmo, dependiendo del resultado de la evaluación de la condición que se define en la estructura del condicional.</p>
 					</section>
 					<section>
-						<p> hAY diferentes tipos de sentencias condicionales: </p>
+						<p> hay diferentes tipos de sentencias condicionales: </p>
 						<p> sentencia IF</p>
 						<p> sentencia IF-ELSE</p>
 						<p> sentencia ELSE IF</p>
@@ -173,7 +173,6 @@ var d bool
 					<section>
 						<h8>Sentencia SWITCH</h8>
 						<p>Esta sentencia nos permite evaluar una variable contra una lista de valores conocidos como case (casos en ingles).</p>
-						<br>
 						<p> En GO los switch pueden ser de dos tipos</p>
 						<p><span class="fragment">
 							EXPRESIÓN: Los case contienen expresiones que son comparadas con el valor de la variable a evaluar.
@@ -189,6 +188,8 @@ var d bool
 						<p> •Si no pasa una expresión, el valor por defecto es true.</p>
 						<p>	•No hay límite de case siempre y cuando cada case esté seguido de al menos un valor contra el cual comparar y dos puntos.</p>
 						<p>	•Si se usa una expresión constante para un case, debe de ser del mismo tipo que el valor a evaluar, y debe de ser una constante o literal.</p>
+					</section>
+					<section>
 						<p>	•Cuando la variable a evaluar es igual a un case, el código después de los dos puntos (“ : “) se ejecuta. No se utiliza break para terminar el case.</p>
 						<p>	•Puede haber un case por default (defecto) para ejecutarse cuando no se cumple ningún case. El case default debe ir al final y no necesita break.</p>
 					</section>
@@ -218,7 +219,9 @@ var d bool
 						<p>	•No hay límites para la cantidad de case en el switch.</p>
 						<p>	•El tipo de dato para un case debe ser el mismo tipo que la variable a evaluar.</p>
 						<p>	•Cuando la variable a evaluar es igual a un case, se ejecuta dicho case y los demás no son verificados. No es necesario un break.</p>
-						<p>	•Cuando la variable a evaluar es igual a un case, se ejecuta dicho case y los demás no son verificados. No es necesario un break.</p>
+					</section>
+					<section>
+						<p> •Puede haber un case default, para ejecutarse cuando no se cumple ningún case. el case default debe ir al final y no utiliza break</p>
 					</section>
 					<section>
 						<p> EJEMPLO</p>
@@ -246,6 +249,9 @@ var d bool
 						<p>	1.Se evalúa la expresión, dando como resultado un número.</p>
 						<p> 2.Luego, se recorren los case, dentro de la estructura buscando que el número coincida con uno de los valores.</p>
 						<p> 3.Es necesario que coincidan todos sus valores.</p>
+
+					</section>
+					<section>
 						<p> 4.Cuando se encuentra la primera coincidencia, se ejecuta el bloque de sentencias correspondiente y se sale de la estructura select case.</p>
 						<p> 5.Si no se encuentra ninguna coincidencia con ningún valor, se ejecuta el bloque de sentencias de la selección case else.</p>
 					</section>

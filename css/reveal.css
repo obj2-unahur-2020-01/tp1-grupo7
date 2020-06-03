@@ -1604,3 +1604,7 @@ body {
 
 .zoomed .reveal .roll span:after {
   visibility: hidden; }
+
+b{
+  color: green;
+}

@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
+		
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -272,6 +273,115 @@ var d bool
    								End Select
 						</code></pre>
 					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Clases/Estructuras</h3>
+					</section>
+					<section>
+						<p>
+							En <b> GO</b> no existen las clases como tal, en este lenguaje se pueden hacer <b>ESTRUCTURAS</b>. <br>
+						<span class="fragment">Una estructura es una colección de campos.</span> <br>
+						<span class="fragment">como se puede ver en este ejemplo:</span>
+
+						</p>
+						<pre class="fragment"><code>
+		type Persona struct {
+			Nombre string
+			Apellido string
+			Edad int
+		}							
+						</code></pre>
+						
+					</section>
+					<section>
+						<p>
+							Para declarar una estructura se utiliza la palabra reservada <b>“type”</b>,  seguida del <b>NOMBRE</b> y el tipo <b>"struct”</b>.<br>
+							<span class="fragment">Dentro de las llaves se establecera todos los campos que identificaran a nuestra estructura con su correspondiente tipo de datos a su lado</span>
+						</p>
+					</section>
+					<section>
+						<p>
+							El <em>valor cero</em> de una estructura es una coleccion de <em>valores ceros</em> en sus campos. <br></p>
+							<span class="fragment">...</span><span class="fragment">...</span><span class="fragment">...</span>
+							<b class="fragment">QUE SIGNIFICA ESTO??</b> 
+							<br>
+							<span class="fragment">Que en el caso del ejemplo Persona, si lo inicializamos sin asignarle valores a sus campos al imprimir el objeto este mostraria <em>2 cadenas vacias y un 0</em>.</span>
+						   
+						
+					</section>
+					<section>
+						<p>
+							Para agregarle valores a los campos de una estructura se puede hacer de diferentes formas. <br>
+							Se puede <b>crear el objeto</b> y luego <b>agregarle los valores</b> 
+						</p>
+						<pre><code>
+	p := new(Persona)
+	"o tambien"
+	var p Persona
+	p.Nombre = “fer”
+	p.Apellido = “alvarez”
+	p.Edad = 30
+						   
+						</code></pre>
+						<span class="fragment">
+							O se puede hacer de una forma directa:
+						</span>
+						<pre class="fragment"><code>
+	persona := Persona{“fer”,”alvarez”,30}
+
+						</code></pre>
+					</section>
+					<section>
+						<p>
+							Podemos acceder al valor de los campos de la estructura como en otros lenguajes con la notacion de puntos (Persona.Nombre).
+						</p>
+						<p class="fragment">
+							Para crearle un metodo que lo pueda usar solo tu estructura como si fuese un metodo de una clase, se lo escribe de esta forma:
+						</p>
+						<pre class="fragment"><code>
+	func (p *Persona) CumplirAnios(){
+		p.Edad +=1
+	}
+						</code></pre>
+	
+					</section>
+					<section>
+						<p>
+							Ya que las <b>estructuras</b> en GO no tienen herencia como en las clases de otros lenguajes, los desarrolladores pensaron una forma de hacerla mas sencilla. <br>
+						</p>
+						<p class="fragment">Esta seria pasarle la estructura a heredar por el campo donde se crea el objeto heredado.</p>
+							<pre class="fragment"><code>
+	type Caballero struct {
+		Espada string
+		Persona 
+		}
+							</code></pre>
+						
+					</section>
+					<section>
+						<p>
+							Para crear un objeto se puede recurrir a la misma manera de antes.
+						</p>
+						<pre><code>
+  	jefrey := new(Caballero)
+  	jefrey.Espada="escalibur"
+  	jefrey.Nombre="Sir"
+  	jefrey.Apellido="Lancelot"
+  	jefrey.Edad= 1800
+						</code></pre>
+						<p class="fragment">O la manera mas directa que esta vez es un poco diferente: </p>
+						<pre class="fragment"><code>
+	Lancelot := Caballero{"excalibur",
+	Persona{"Sir","Lancelot",1800}}
+						</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Todo el codigo, que se dio como ejemplo para ejecutar.</h3>
+						<iframe height="400px" width="100%" src="https://repl.it/@albertosanchez6/estructura?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+					</section>
+
 				</section>
 			</div>
 		</div>

@@ -103,10 +103,185 @@ var d bool
 						
 					</section>
 					<section>									
-						<p>En Go existe la sintaxis ":=" que es una abreviatura para incializar variables. Por ejemplo:</p>
+						<p>En Go existe la sintaxis ":=" que es una abreviatura para inicializar variables. Por ejemplo:</p>
 						<pre><code>f := "short"</code></pre>
 						<span>es igual a</span>
 						<pre><code>var f string = "short"</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Funciones</h3>
+						<p>Las funciones en Go proporcionan un código organizado y reutilizable para realizar un conjunto de acciones,
+						simplifican el proceso de codificación, evitan la lógica redundante y hacen que el código sea más fácil de seguir. <br>
+						Describiremos la declaración y la utilización de funciones, parametros, funciones y cierres literales, valores de retorno, valores de retorno nombrados y funciones variables.</p>
+					</section>
+					<section>
+						<p>En el lenguaje Go es obligatorio el planteo de una función llamada main</p>
+						<pre><code>package main 
+import "fmt"
+
+func saludar(nombre string, edad int) string {
+    return fmt.Sprintf("Hola, mi nombre es %s y tengo %d años", nombre, edad)
+}
+
+func main() {
+    fmt.Println(saludar("Orlando", 26))
+}
+						</code></pre>
+						<p>Esta funcion es sumamente indispensable para ejecutar el programa</p>
+					</section>
+					<section>
+						<p>Go tiene una serie de paquetes que proveen algunas funcionalidades básicas.</p>
+						<p>Como se aprecia en el ejemplo, hemos empleado las funciones que nos provee el paquete "fmt".</p>
+						<pre><code>package main 
+import -"fmt" 
+
+func main(){
+	fmt.Print("Hola Mundo")
+}
+						</main></code></pre>
+					</section>
+					<section>
+						<h3>Estructura de una funcion:</h3>
+						<p>Una función comienza con la palabra clave func y seguida a esta su nombre, 
+						puede tener parámetros, un valor o más de retorno y encerrada entre llaves le sigue su algoritmo (la llave de apertura debe ir en la mísma línea de la definición de la función):</p>
+						<pre><code>func [nombre de la función] ([parámetros de la función]) [valor/es que retorna] {
+	[altoritmo]
+}
+						</code></pre>
+					</section>
+					<section>
+						<h3>Parametros</h3>
+						<p>Una función puede declarar opcionalmente un conjunto de parámetros:</p>
+						<pre><code>func SayHelloToMe(firstName, lastName string, age int) {
+	fmt.Printf("Hello, %s %s!\n", firstName, lastName)
+	fmt.Printf("You are %d", age)
+}
+						</code></pre>
+						<p class="fragment">Observe que el tipo para firstName se omite porque es idéntica a lastName.</p>
+					</section>
+					<section>
+						<h3>Funciones y cierres literales</h3>
+						<p>En Go no solo existe la manera tradicinal de hacer funciones, si no que existen algunas un tanto peculiares.</p>
+					</section>
+					<section>
+						<p>Una simple función literal, imprimiendo Hello! al stdout</p>
+						<pre><code>package main
+
+import "fmt"
+
+func main() {
+	func(){
+		fmt.Println("Hello!")
+	}()
+}						
+						</code></pre>
+					</section>
+					<section>
+						<p>Una función literal, imprimiendo el argumento str a stdout:</p>
+						<pre><code>func main() {
+	func(str string) {
+		fmt.Println(str)
+	}("Hello!")
+}
+						</code></pre>
+					</section>
+					<section>
+						<p>Una función literal, cerrando sobre la variable str :</p>
+						<pre><code>import "fmt"
+
+func main() {
+	str := "Hello!"
+	func() {
+		fmt.Println(str)
+	}()
+}
+						</code></pre>
+					</section>
+					<section>
+						<p>Tambien es posible asignar una función literal a una variable:</p>
+						<pre><code>package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	str := "Hello!"
+	anon := func() {
+		fmt.Println(str)
+	}
+	anon()
+}
+							</code></pre>
+					</section>
+					<section>
+						<h3>Valores de retorno</h3>
+						<p>Una función puede devolver uno o más valores al llamante:</p>
+						<pre><code>func sum(a,b int)int{
+	return a+b
+}
+						</code></pre>
+						<pre><code>func AddAndMultiply(a, b int) (int, int) {
+	return a+b, a*b
+}
+						</code></pre>
+						<p class="fragment">Dos cosas importantes deben ser notadas:</p>
+						<p class= "fragment">1) Los paréntesis pueden omitirse para un único valor de retorno. <br>
+						2) Cada declaración de return debe proporcionar un valor para todos los valores de retorno declarados.</p>
+					</section>
+					<section>
+						<h3>Valores de retorno nombrados:</h3>
+						<p>Los valores de retorno se pueden asignar a una variable local. 
+						Una declaración de return vacía se puede usar para devolver sus valores actuales. 
+						Esto se conoce como retorno "desnudo" .
+						</p>
+					</section>
+					<section>
+						<p>Ejemplo de una funcion con un unico valor a retornar: </p>
+						<pre><code>func Inverse(v float32) (reciprocal float32) {
+	if v == 0 {
+		return
+	}
+	reciprocal = 1 / v
+	return
+}
+						</code></pre>
+						<p class="fragment"> Las declaraciones de devoluciones desnudas se deben 
+						usar solo en funciones cortas, ya que dañan la legibilidad en funciones más largas</p>
+					</section>
+					<section>
+						<p>Ejemplo de una funcion con multiples valores retornados:</p>
+						<pre><code>func split(sum int) (x, y int) {
+	x = sum * 4 / 9
+	y = sum - x
+	return
+}
+						</code></pre>
+						<p class="fragment">Dos cosas importantes deben ser notadas:</p>
+						<p class="fragment">1) Los paréntesis alrededor de los valores de retorno son obligatorios. <br>
+						2) Siempre se debe proporcionar una declaración de return vacía.</p>
+					</section>
+					<section>
+						<h3>Funciones Variables</h3>
+						<p>Se puede llamar a una función variad con cualquier número de argumentos finales.</p>
+						<pre><code>package main
+
+import "fmt"
+
+func variadic(strs ...string) {
+		// strs is a slice of string
+		for i, str := range strs {
+			fmt.Printf("%d: %s\n", i, str)
+		}
+}
+
+func main() {
+		variadic("Hello", "Goodbye")
+		variadic("Str1", "Str2", "Str3")
+}
+							</code></pre>
 					</section>
 				</section>
 				<section>

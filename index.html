@@ -952,10 +952,10 @@ func main() {
 				<section>
 					<h2>Arreglos en GO</h2>
 					<div class="fragment">
-						<p>En Go, un <em>Array</em> es una secuencia enumerada de elementos, de un tamaño específico.</p>
+						<p>En Go, un <em>Array</em> es una secuencia enumerada de elementos, de un tamaño específico inmutable.</p>
 					</div>
 					<div class="fragment">
-						<p>La sintaxis para declarar un arreglo sería; <em>var := x [l]T{n}</em> ; [l] simboliza el tamaño del arreglo, T el tipo del dato que contiene y {n} el contenido.</p>
+						<p>La sintaxis para declarar un arreglo sería; <em>var := x [l]T{n}</em>; [l] simboliza el tamaño del arreglo, T el tipo del dato que contiene y {n} el contenido.</p>
 					</div>
 					<div class="fragment">
 						<p>También es posible declarar un arreglo vacío y agregar valores en cada indice individualmente.</p>
@@ -991,17 +991,17 @@ func main() {
 					</div>
 				</section>
 				<section>
-					<h4>Características sobre los arreglos en GO:</h4>
+					<h4>Características principales de los arreglos en GO:</h4>
 					<div class="fragment">
-						<p>Por defecto un array vacío, de ints contiene 0s y un array de strings contiene espacios en blanco. Los arrays siempre arrancan desde el indice 0 en adelante.</p>
+						<p>1.- Por defecto un array vacío, de ints contiene 0s y un array de strings contiene espacios en blanco. Los arrays siempre arrancan desde el indice 0 en adelante.</p>
 					</div>	
 					<div class="fragment">
-						<p>Podemos setear un valor en un indice concreto usando; <em> arreglo[index] = valor</em> ; y obtener un valor usando;<em> arreglo[index]</em>. La función primitiva <em>len</em> retorna el tamaño del arreglo.</p> 
+						<p>2.- Podemos setear un valor en un indice concreto usando; <em> arreglo[index] = valor</em>; y obtener un valor usando;<em> arreglo[index]</em>. La función primitiva <em>len</em> retorna el tamaño del arreglo.</p> 
 					</div>
 				</section>
 				<section>
 					<div class="fragment">
-						<p>En un array, la elipsis <em>"..."</em> puede ser usada en donde se define el tamaño del array, y su tamaño va ser determinado por la cantidad de datos que contiene inicialmente.</p>
+						<p>3.- En un array, la elipsis <em>(...)</em> puede ser usada en donde se define el tamaño del array, y su tamaño va ser determinado por la cantidad de datos que contiene inicialmente.</p>
 					</div>
 					<div class="fragment">
 						<pre><code data-trim data-noescape>
@@ -1021,7 +1021,7 @@ func main() {
 				</section>
 				<section>	
 					<div class="fragment">
-						<p>Es posible iterar un arreglo sobre el range de los elementos que contiene el arreglo.</p>
+						<p>4.- Es posible iterar un arreglo sobre el range de los elementos que contiene el arreglo.</p>
 					</div>
 					<div class="fragment">
 						<pre><code data-trim data-noescape>
@@ -1044,7 +1044,7 @@ func main() {
 				</section>
 				<section>
 					<div class="fragment">
-						<p>En Go, un array es un tipo de valor, no un tipo de referencia. Cuando un array es asignado a una var nueva, los cambios realizados a la var nueva no afectan el array original.</p>
+						<p>5.- En Go, un array es un tipo de valor, no un tipo de referencia. Cuando un array es asignado a una var nueva, los cambios realizados a la var nueva no afectan el array original.</p>
 					</div>
 					<div class="fragment">
 						<pre><code data-trim data-noescape>
@@ -1070,7 +1070,7 @@ func main() {
 				</section>	
 				<section>	
 					<div class="fragment">
-						<p>En un array, sí el tipo del dato del array es comparable, entonces el tipo del array también es comparable. Es posible comparar directamente 2 arrays usando el operador de igualdad ==.</p>
+						<p>6.- En un array, sí el tipo del dato del array es comparable, entonces el tipo del array también es comparable. Es posible comparar directamente 2 arrays usando el operador de igualdad (==).</p>
 					</div>
 					<div class="fragment">
 						<pre><code data-trim data-noescape>
@@ -1108,24 +1108,23 @@ func main() {
 								}
 								fmt.Println("2d: ", twoD)
 							}
-							/*output:
-							2d:  [[0 1 2] [1 2 3]]*/
+							//2d: [[0 1 2] [1 2 3]]
 						</code></pre>
 					</div>
 					<div class="fragment">
-						<p>Los tipos de los arrays son unidimensionales, pero se pueden componer tipos para crear estructuras de datos multidimensionales.</p>
+						<p>Los tipos de los arrays son unidimensionales, es posible componer tipos para crear estructuras de datos multidimensionales.</p>
 					</div>
 					<div class="fragment">
-						<p>Por esta razón raramente son usados, ya que los <em>Slices</em> son una abstracción de los arrays que no cuentan con la misma limitación.</p>
+						<p>Los arrays raramente son usados, ya que los <em>Slices</em> son una abstracción de los arrays, que no tienen el mismo problema.</p>
 					</div>	
 				</section>
 				<section>
-					<h4>Diferencias principales entre Arrays y Slices:</h4>
+					<h4>Diferencias principales entre Arrays y Slices en GO:</h4>
 					<div class="fragment">
 						<p>1.- Los Slices son de tamaño dinámico, la primer posición del indice en un Slice es siempre 0 y la última sería tamaño del Slice – 1. Si un Slice es creado sin inputs su tipo es <em>nil</em>.</p>
 					</div>
 					<div class="fragment">
-						<p>2.- Tienen una función primitiva que permite definirlos <em>make([]tipo,tamaño,capacidad)</em> tipo representa el tipo de los datos que contiene, tamaño es el total de los elementos que contiene y capacidad el tamaño máximo hasta el que se puede extender.</p>
+						<p>2.- Tienen una función primitiva que permite definirlos; <em>make([]tipo,tamaño,capacidad)</em>; tipo representa el tipo de los datos que contiene, tamaño es el total de los elementos que contiene y capacidad el tamaño máximo hasta el que se puede extender.</p>
 					</div>
 				</section>	
 				<section>	
@@ -1138,7 +1137,7 @@ func main() {
 				</section>	
 				<section>	
 					<div class="fragment">
-						<p>5.- También cuentan con un operador especial; <em>array[low:high]</em> ; lo que genera un Slice desde low hasta high-1, apartir de un Array u otro Slice.</p>
+						<p>5.- También cuentan con un operador especial; <em>array[low:high]</em>; lo que genera un Slice desde low hasta high-1, apartir de un Array u otro Slice.</p>
 					</div>
 					<div class="fragment">
 						<pre><code data-trim data-noescape>
@@ -1156,15 +1155,15 @@ func main() {
 					</div>
 				</section>
 				<section>
-					<h4>Características principales de los Slices:</h4>
+					<h4>Características principales de los Slices en GO:</h4>
 					<div class="fragment">
 						<p>1.- Comparten las funciones de set, get y len con los Arrays.</p>
 					</div>
 					<div class="fragment">
-						<p>2.- Tienen una función de; <em>append(slice,dato)</em> ; que retorna el Slice original recibido por parámetro modificado, conteniendo uno o más (cada dato es separado por una coma) datos nuevos.</p>
+						<p>2.- Tienen una función de; <em>append(slice,dato)</em>; que retorna el Slice original recibido por parámetro modificado, conteniendo uno o más (cada dato es separado por una coma) datos nuevos.</p>
 					</div>
 					<div class="fragment">
-						<p>3.- Tienen una función que permite copiarlos; <em>copy(slice nuevo,slice original)</em> ; que retorna un Slice nuevo que es la copia del original, sin modificar el Slice original.</p>
+						<p>3.- Tienen una función que permite copiarlos; <em>copy(slice nuevo,slice original)</em>; que retorna un Slice nuevo que es la copia del original, sin modificar el Slice original.</p>
 					</div>
 				</section>
 				<section>

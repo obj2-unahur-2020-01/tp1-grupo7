@@ -951,7 +951,266 @@ func main() {
 				</section>
 			</div>
 		</div>
+				<section>
+					<h2>Arreglos en GO</h2>
+					<div class="fragment">
+						<p>En Go, un <em>Array</em> es una secuencia enumerada de elementos, de un tamaño específico.</p>
+					</div>
+					<div class="fragment">
+						<p>La sintaxis para declarar un arreglo sería;<em> var := x [l]T{n}</em>; [l] simboliza el tamaño del arreglo, T el tipo del dato que contiene y {n} el contenido.</p>
+					</div>
+					<div class="fragment">
+						<p>También es posible declarar un arreglo vacío y agregar valores en cada indice individualmente.</p>
+					</div>	
+				</section>
+				<section>
+					<h3>Por ejemplo:</h3>
+					<div class="fragment">
+						<pre><code data-trim data-noescape>
+							package main
 
+							import "fmt"
+
+							func main() {
+								var a [5]int
+								fmt.Println("emp:", a)
+								a[4] = 100
+								fmt.Println("set:", a)
+								fmt.Println("get:", a[4])
+								fmt.Println("len:", len(a))
+								b := [5]int{1, 2, 3, 4, 5}
+								fmt.Println("dcl:", b)
+							}
+							/*
+							outputs
+							emp: [0 0 0 0 0]
+							set: [0 0 0 0 100]
+							get: 100
+							len: 5
+							dcl: [1 2 3 4 5]
+							*/
+						</code></pre>
+					</div>
+					<div class="fragment">
+						<p>Acá estamos creando un arreglo que va a contener exactamente 5 ints. El tipo de elementos y el tamaño son ámbos parte de el tipo del arreglo.</p>
+					</div>
+					<div class="fragment">
+						<p>Por defecto un arreglo vacío, de ints contiene 0s y un arreglo de strings contiene espacios en blanco. Los arreglos siempre arrancan desde la posición 0 en adelante.</p>
+					</div>
+					<div class="fragment">
+						<p>Podemos setear un valor en un indice concreto usando;<em> arreglo[index] = valor</em>; y obtener un valor usando;<em> arreglo[index]</em>. La función primitiva <em>len</em> retorna el tamaño del arreglo.</p> 
+					</div>
+				</section>
+				<section>
+					<h3>Otras características sobre los arreglos</h3>
+					<div class="fragment">
+						<p>En un arreglo, si la elipsis <em>"..."</em> es utilizada en la parte donde se define el tamaño, el tamaño del arreglo es determinado por los elementos que contiene inicialmente.</p>
+					</div>
+					<div class="fragment">
+						<pre><code data-trim data-noescape>
+							package main 
+  
+							import "fmt"
+
+							func main() {
+								abecedario:= [...]string{"A", "B", "C", "D", "E"} 
+								fmt.Println("Elementos del arreglo: ", abecedario)
+								fmt.Println("Tamaño del arreglo: ", len(abecedario)) 
+							}
+							/*
+							outputs
+							Elementos del arreglo:  [A B C D E]
+							Tamaño del arreglo: 5
+							*/
+						</code></pre>
+					</div>
+					<div class="fragment">
+						<p>Es posible iterar un arreglo sobre el range de los elementos en el arreglo.</p>
+					</div>
+					<div class="fragment">
+						<pre><code data-trim data-noescape>
+							package main
+							
+							import "fmt"
+							
+							func main() {
+								array:=[...]int{29,79,49,39,20,49,48,49}
+								for x:=0; x < len(array); x++{ 
+									fmt.Printf("%d\n", array[x]) 
+								}
+							}
+							/*
+							outputs
+							29
+							79
+							49
+							39
+							20
+							49
+							48
+							49
+							*/
+						</code></pre>
+					</div>	
+				</section>
+				<section>
+					<h3>Más características sobre los arreglos</h3>
+					<div class="fragment">
+						<p>En Go, un arreglo es un tipo de valor, no un tipo de referencia. Entonces cuando un arreglo es asignado a una variable nueva, los cambios realizados a la variable nueva no afectan el arreglo original.</p>
+					</div>
+					<div class="fragment">
+						<pre><code data-trim data-noescape>
+							package main
+							
+							import "fmt"
+							
+							func main() {
+								array:=[...]int{10,20,30,40}
+								fmt.Printf("Arreglo original(antes): ", array) 
+								newArray:=array
+								fmt.Printf("Arreglo nuevo(antes): ", newArray)
+								newArray[0]=50
+								fmt.Printf("Arreglo nuevo(después): ", newArray)
+								fmt.Printf("Arreglo original(después): ", array)
+							}
+							/*
+							outputs
+							Arreglo original(antes): [10 20 30 40]
+							Arreglo nuevo(antes): [10 20 30 40]
+							Arreglo nuevo(después): [50 20 30 40]
+							Arreglo original(después): [10 20 30 40]
+							*/
+						</code></pre>
+					</div>
+					<div class="fragment">
+						<p>En un arreglo, sí el tipo del elemento del arreglo es comparable, entonces el tipo del arreglo también es comparable. O sea que es posible comparar directamente dos arreglos usando el operador de igualdad ==.</p>
+					</div>
+					<div class="fragment">
+						<pre><code data-trim data-noescape>
+							package main
+							
+							import "fmt"
+							
+							func main() {
+								arr1:=[3]int{9,7,6}
+								arr2:=[...]int{9,7,6}
+								arr3:=[3]int{9,5,3}
+								fmt.Println(arr1==arr2) 
+								fmt.Println(arr2==arr3) 
+								fmt.Println(arr1==arr3)
+							}
+							/*
+							outputs
+							true
+							false
+							false
+							*/
+						</code></pre>
+					</div>					
+				</section>
+				<section>
+					<h3>Limitaciones de los arreglos en Go</h3>
+					<div class="fragment">
+						<pre><code data-trim data-noescape>
+							package main
+							
+							import "fmt"
+							
+							func main() {
+								var twoD [2][3]int
+								for i := 0; i < 2; i++ {
+									for j := 0; j < 3; j++ {
+										twoD[i][j] = i + j
+									}
+								}
+								fmt.Println("2d: ", twoD)
+							}
+							/*
+							output
+							2d:  [[0 1 2] [1 2 3]]
+							*/
+						</code></pre>
+					</div>
+					<div class="fragment">
+						<p>Los tipos de los arreglos son unidimensionales, pero se pueden componer tipos para armar estructuras de datos multidimensionales.</p>
+					</div>
+					<div class="fragment">
+						<p>Por esta razón suelen ser usados raramente, ya que los <em>Slices</em> son una abstracción de los Arrays que no cuentan con la misma limitación además de tener otras ventajas.</p>
+					</div>	
+				</section>
+				<section>
+					<h3>Diferencias principales entre Arrays y Slices</h3>
+					<div class="fragment">
+						<p>1.- Los Slices son de tamaño dinámico, la primer posición del indice en un Slice es siempre 0 y la última sería tamaño del Slice – 1. Si un Slice es creado sin inputs su tipo es <em>nil</em>.</p>
+					</div>
+					<div class="fragment">
+						<p>2.- Tienen una función primitiva que permite definirlos <em>make([]tipo,tamaño,capacidad)</em> tipo representa el tipo de los datos que contiene, tamaño es el total de los elementos que contiene y capacidad el tamaño máximo hasta el que se puede extender.</p>
+					</div>
+					<div class="fragment">
+						<p>3.- Son un tipo de referencia por lo tanto, sí pueden ser afectados por cambios realizados a una variable nueva que contiene el Slice original.</p>
+					</div>
+					<div class="fragment">
+						<p>4.- No pueden ser comparados de la misma forma que un Array común, a los Slice sólo se les puede preguntar un no lógico, por ejemplo: Sí es o no es nil.</p> 
+					<div class="fragment">
+						<p>5.- También cuentan con un operador especial con la sintaxis; <em>array[low:high]</em>; lo que genera un Slice desde low hasta high-1, apartir de un Array u otro Slice.</p>
+					</div>
+					<div class="fragment">
+						<pre><code data-trim data-noescape>
+							package main
+							
+							import "fmt"
+							
+							func main() {
+								arr [6]int{1,2,3,4,5,6}
+								slice arr[2:5]
+								fmt.Printf("Slice: ",slice)
+							}
+							/*
+							output
+							Slice: 2 3 4
+							*/
+						</code></pre>
+					</div>
+				</section>
+				<section>
+					<h3>Características principales de los Slices</h3>
+					<div class="fragment">
+						<p>1.- Comparten las funciones de set, get y len con los Arrays.</p>
+					</div>
+					<div class="fragment">
+						<p>2.- Tienen una función de <em>append(slice,dato)</em>; que retorna el Slice original recibido por parámetro modificado, conteniendo uno o más (cada dato es separado por una coma) datos nuevos.</p>
+					</div>
+					<div class="fragment">
+						<p>3.- Tienen una función que permite copiarlos <em>copy(slice nuevo,slice original)</em>; que retorna un Slice nuevo que es la copia del original, sin modificar el Slice original.</p>
+					</div>
+					<div class="fragment">
+						<p>4.- Los Slices pueden ser combinados en estructuras de datos multidimensionales. Y el tamaño de los Slices internos puede variar, al contrario de los Arrays multidimensionales.</p>
+					</div>
+					<div class="fragment">
+						<pre><code data-trim data-noescape>
+							package main
+							
+							import "fmt"
+							
+							func main() {
+								twoD := make([][]int, 3)
+								for i := 0; i < 3; i++ {
+									innerLen := i + 1
+									twoD[i] = make([]int, innerLen)
+									for j := 0; j < innerLen; j++ {
+										twoD[i][j] = i + j
+									}
+								}
+								fmt.Println("2d: ", twoD)
+							}
+							/*
+							output
+							2d:  [[0] [1 2] [2 3 4]]
+							*/
+						</code></pre>
+					</div>
+				</section>	
+					
 		<script src="js/reveal.js"></script>
 
 		<script>
